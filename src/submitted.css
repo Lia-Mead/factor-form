@@ -1,0 +1,19 @@
+.submitted-page {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+p {
+    font-weight: 300;
+}
+
+.sum-box {
+    background: #dde7fa;
+    width: 80%;
+    padding: 1em 1em 2em;
+    margin: 20px 0 40px;
+    border-radius: 0.7em;
+}
