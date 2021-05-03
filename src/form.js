@@ -36,12 +36,25 @@ const Form = ({ t, history }) => {
 
     // verify correct phone number format
     const tryNumber = (numberString) => {
-        const numberRegExp = new RegExp(/^\+*[\d -]*$/);
+        const numberRegExp = new RegExp(/^\+?[\d -]*$/);
+        // const numberRegExp = new RegExp(/^\+*[\d -]*$/);
         if (numberString.match(numberRegExp) && numberString.length < 22) {
             setPhone(numberString);
             setError(null);
         } else {
             setError(t("valid phone format"));
+        }
+    };
+
+    const tryEmail = (emailString) => {
+        const emailRegExp = new RegExp(
+            /(^[\w.]+@\w+\.\w+$)|(^[\w.]*$)|(^[\w.]+@$)|(^[\w.]+@\w+$)|(^[\w.]+@\w+\.$)/
+        );
+        if (emailString.match(emailRegExp)) {
+            setEmail(emailString);
+            setError(null);
+        } else {
+            setError(t("invalid email format"));
         }
     };
 
@@ -72,7 +85,7 @@ const Form = ({ t, history }) => {
                 ></input>
 
                 <input
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={(e) => tryEmail(e.target.value)}
                     name="email"
                     type="email"
                     placeholder={t("Email")}
